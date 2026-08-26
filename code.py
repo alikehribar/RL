@@ -26,7 +26,6 @@ def integral(x, t_last, n=200000, y0=0.0):
          y[k] = y[k - 1] + (derriv(xs[k], y[k - 1]) * dt)
      return t, y, xs
 
-t, y, xs = integral(pwm, (2*period))
 
 def rk4(x, t_last, n=20000, y0=0.0):
     t = np.linspace(0.0, t_last, n)
@@ -62,16 +61,12 @@ def trapez(x, t_last, n=20000, y0=0.0):
 t, y, xs = integral(pwm, (2*period))
 I = y/R
 Vl = (xs - y)
-plt.ion()
-for k in range(0, len(t), 200):
-    plt.clf()
-    plt.plot(t[:k + 1], (I[:k + 1] * 1e6), color="tab:blue")
-    plt.xlabel("t (s)")
-    plt.ylabel("I (uA)", color="tab:blue")
-    plt.grid(True)
-    plt.twinx()
-    plt.plot(t[:k + 1], Vl[:k + 1], color="tab:red")
-    plt.ylabel("Vl (V)", color="tab:red")
-    plt.pause(0.001)
-plt.ioff()
+
+plt.plot(t, (I * 1e6), color="tab:blue")
+plt.xlabel("t (s)")
+plt.ylabel("I (uA)", color="tab:blue")
+plt.grid(True)
+plt.twinx()
+plt.plot(t, Vl, color="tab:red")
+plt.ylabel("Vl (V)", color="tab:red")
 plt.show()
