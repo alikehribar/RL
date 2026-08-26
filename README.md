@@ -81,7 +81,7 @@ exactly the opposite.
 ## 4. What we learned
 
 I learned to write numerical methods in Python, and about the RL circuit: how the inductor
-behaves under PWM, and how to solve integrals.
+behaves under PWM, and solve integrals on python
 
 ## 5. Conclusion
 
@@ -98,9 +98,7 @@ To see the other extreme, we also ran the same circuit at 50 kHz, where the half
 10 µs, that is exactly 1 tau. Now the current can no longer reach its final value of
 `330 µA = 3.3 V / 10 kΩ` before the PWM switches, so instead of full exponentials we get a
 triangular ripple that swings between about 89 µA and 242 µA. The peak-to-peak swing is
-**152.7 µA**, which is 46 % of the 330 µA final value. This matches the analytical steady
-state ripple `I_final * (1 - e^-1) / (1 + e^-1) = 152.5 µA`, so the simulation and the
-theory agree.
+**152.7 µA**, which is 46 % of the 330 µA final value
 
 <img src="pwm-half-period-1-tau.png" width="700" alt="RL current ripple when the PWM half period equals one tau">
 
